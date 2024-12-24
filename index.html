@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Surprise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(to bottom, #ffefba, #ffffff);
+            overflow-x: hidden;
+        }
+
+        /* Khmer text font */
+        .khmer-text {
+            font-family: 'Kantumruy', Arial, sans-serif;
+            font-weight: 700;
+        }
+
+        /* Snowfall effect */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall 10s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(110vh);
+            }
+        }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: translateX(-10px);
+            }
+            50% {
+                transform: translateX(10px);
+            }
+        }
+
+        .snowflake:nth-child(even) {
+            animation: fall 8s linear infinite, sway 3s ease-in-out infinite;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+            background-color: #ff4b5c;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .message {
+            text-align: center;
+            margin: 30px;
+            font-size: 1.5em;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px auto;
+            max-width: 900px;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            object-fit: cover;
+            opacity: 0;
+            transform: translateX(-100%); /* Start from the left side */
+            animation: slideIn 1s forwards;
+        }
+
+        .gallery img:nth-child(even) {
+            animation-delay: 0.3s;
+        }
+
+        .gallery img:nth-child(odd) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0); /* Move to the center */
+            }
+        }
+
+        /* For smaller screens */
+        @media (max-width: 768px) {
+            .gallery img {
+                animation: slideInMobile 1s forwards;
+            }
+
+            @keyframes slideInMobile {
+                to {
+                    opacity: 1;
+                    transform: translateX(0); /* Move to the center */
+                }
+            }
+        }
+
+        .countdown {
+            text-align: center;
+            font-size: 2em;
+            color: #333;
+            margin: 20px;
+        }
+
+        .surprise {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .surprise button {
+            background: #ff4b5c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .surprise button:hover {
+            background: #ff6b7c;
+        }
+
+        .hidden-message {
+            display: none;
+            text-align: center;
+            margin: 20px;
+            font-size: 1.8em;
+            color: #ff4b5c;
+        }
+    </style>
+</head>
+<body>
+    <!-- Snowfall effect -->
+    <div id="snowflakes"></div>
+
+    <header>
+        <h1 class="khmer-text">Merry Christmas, My Love! <span>RoReakSmey</span></h1>
+    </header>
+
+    <div class="message khmer-text">
+        <p>You are the greatest gift in my life. This Christmas, I just want you to know how much you mean to me. 🎄❤️🎄❤️</p>
+    </div>
+
+    <div class="gallery">
+        <img src="photo_2024-12-24_14-36-49.jpg" alt="Memory 1">
+        <img src="photo_2024-12-24_15-29-52.jpg" alt="Memory 2">
+        <img src="photo_2024-12-24_14-37-06.jpg" alt="Memory 3">
+    </div>
+
+    <div class="countdown" id="countdown"></div>
+
+    <div class="surprise">
+        <button onclick="revealSurprise()">Click Here For Surprise</button>
+    </div>
+
+    <div class="hidden-message khmer-text" id="hidden-message">
+        🎁 អូនគឺជាមនុស្សស្រីដ៏ពិសេសបំផុតក្នុងជីវិតរបស់បង ហើយបងពិតជាសំណាងណាស់ដែលបានមានអូន។ Merry Christmas! 🎁
+        <div class="gallery">
+            <img src="photo_2024-12-24_14-36-49 (2).jpg" alt="Memory 1">
+            <img src="photo_2024-12-24_15-29-42.jpg" alt="Memory 2">
+            <img src="photo_2024-12-24_15-29-48 (2).jpg" alt="Memory 3">
+            <img src="photo_2024-12-24_15-29-50.jpg" alt="Memory 1">
+            <img src="photo_2024-12-24_15-29-48.jpg" alt="Memory 2">
+            <img src="photo_2024-12-24_15-29-45.jpg" alt="Memory 3">
+        </div>
+        បងចង់និយាយប្រាប់ថាបងស្រលាញ់អូនខ្លាំងៗ My Baby 
+        <div class="gallery">
+            <img src="photo_2024-12-24_15-29-44.jpg" alt="Memory 1">
+            <img src="photo_2024-12-24_15-29-51.jpg" alt="Memory 2">
+        </div>
+        បងក៏មានកាដូវបន្តិចបន្តួចឲ្យអូនដែរ សង្ឃឹមថាអូននឹងពេញចិត្តវា
+    </div>
+
+    <script>
+        // Snowflakes generator
+        const audio = new Audio("jingle bell sweet.mp3");
+        audio.loop = true;
+        audio.play();
+        const snowflakesContainer = document.getElementById("snowflakes");
+
+        for (let i = 0; i < 100; i++) {
+            const snowflake = document.createElement("div");
+            snowflake.classList.add("snowflake");
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            snowflake.style.animationDelay = `${Math.random() * 5}s`;
+            snowflake.style.animationDuration = `${5 + Math.random() * 5}s`;
+            snowflakesContainer.appendChild(snowflake);
+        }
+
+        // Countdown to Christmas
+        const countdown = document.getElementById("countdown");
+
+        function updateCountdown() {
+            const now = new Date();
+            const christmas = new Date(now.getFullYear(), 11, 25);
+
+            if (now > christmas) {
+                christmas.setFullYear(now.getFullYear() + 1);
+            }
+
+            const diff = christmas - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            countdown.textContent = `Christmas:  ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Reveal surprise
+        function revealSurprise() {
+            document.getElementById("hidden-message").style.display = "block";
+            const newAudio = new Audio("song2.mp3");
+            audio.pause();
+            newAudio.loop = true; // Optional: Loop the second song as well
+            newAudio.play();
+        }
+    </script>
+</body>
+</html>
